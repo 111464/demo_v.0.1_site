@@ -812,17 +812,18 @@
 
 </body>
     <script>
-        // Скролл отзывов влево/вправо
-        const wrapper = document.getElementById('reviewsWrapper');
-        const leftBtn = document.getElementById('scrollLeftBtn');
-        const rightBtn = document.getElementById('scrollRightBtn');
-
-        if (leftBtn && rightBtn && wrapper) {
-            leftBtn.addEventListener('click', () => {
-                wrapper.scrollBy({ left: -320, behavior: 'smooth' });
-            });
-            rightBtn.addEventListener('click', () => {
-                wrapper.scrollBy({ left: 320, behavior: 'smooth' });
+        // Горизонтальная прокрутка колесиком мыши
+        const reviewsWrapper = document.getElementById('reviewsWrapper');
+        
+        if (reviewsWrapper) {
+            reviewsWrapper.addEventListener('wheel', function(e) {
+                if (e.target.closest('.reviews-wrapper')) {
+                    e.preventDefault();
+                    reviewsWrapper.scrollBy({
+                        left: e.deltaY * 2,
+                        behavior: 'auto'
+                    });
+                }
             });
         }
     </script>
