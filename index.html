@@ -334,22 +334,6 @@
             gap: 10px;
         }
 
-        .scroll-btn {
-            background: #2c5f8a;
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .scroll-btn:hover {
-            background: #1e4464;
-        }
-
         .reviews-wrapper {
             overflow-x: auto;
             scroll-behavior: smooth;
@@ -366,7 +350,7 @@
 
         .review-card {
             flex: 0 0 320px;
-            background: #f8fafc;
+            background: #ffff;
             border-radius: 20px;
             padding: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -380,7 +364,7 @@
         .review-card h3 {
             font-size: 18px;
             margin-bottom: 8px;
-            color: #2c5f8a;
+            color: #000000;
         }
 
         .review-date {
@@ -746,10 +730,6 @@
         <div class="container">
             <div class="reviews-header">
                 <h2 class="section-title">Отзывы пациентов</h2>
-                <div class="scroll-buttons">
-                    <button class="scroll-btn" id="scrollLeftBtn">←</button>
-                    <button class="scroll-btn" id="scrollRightBtn">→</button>
-                </div>
             </div>
             <div class="reviews-wrapper" id="reviewsWrapper">
                 <div class="reviews-grid">
