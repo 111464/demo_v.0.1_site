@@ -150,6 +150,45 @@
             text-align: center;
             margin-top: 40px;
         }
+		
+        /* Кнопка копирования телефона */
+        .copy-btn {
+            background: #2c5f8a;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #1e4464;
+        }
+
+        /* Уведомление о копировании */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c5f8a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 14px;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .toast-notification.show {
+            opacity: 1;
+        }
 
         /* ========== БЛОК ПРЕИМУЩЕСТВ ========== */
         .features {
@@ -570,6 +609,20 @@
             color: #2c5f8a;
             text-decoration: none;
             font-size: 18px;
+            background: #f0f4f8;
+            padding: 8px 12px;
+            border-radius: 40px;
+            transition: background 0.3s;
+        }
+
+        .header-phone:hover {
+            background: #e0e7ef;
+        }
+
+        @media (max-width: 768px) {
+            .header-phone {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -722,6 +775,9 @@
                     <p>От 15000₽</p>
                 </div>
             </div>
+            	<div class="btn-center">
+                	<button class="copy-btn" onclick="copyPhone()">📞 Скопировать номер телефона</button>
+            	</div>
         </div>
     </section>
 
@@ -825,6 +881,30 @@
                     });
                 }
             });
+        }
+        // Функция копирования телефона
+        function copyPhone() {
+            const phone = '+7 (920) 247-73-55';
+            navigator.clipboard.writeText(phone).then(() => {
+                showToast('Телефон скопирован: ' + phone);
+            }).catch(() => {
+                alert('Не удалось скопировать телефон');
+            });
+        }
+
+        // Функция показа уведомления
+        function showToast(message) {
+            let toast = document.querySelector('.toast-notification');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.className = 'toast-notification';
+                document.body.appendChild(toast);
+            }
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
         }
     </script>
 </html>
